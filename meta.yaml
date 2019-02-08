@@ -1,0 +1,48 @@
+{% set version = "2.4.2" %}
+
+package:
+    name: libint2
+    version: {{ version }}
+
+source:
+    git_url: git@github.com:evaleev/libint.git           # [linux]
+    git_url: https://github.com/evaleev/libint.git       # [osx]
+    git_tag: 004f32e
+
+build:
+    number: 1                                            # [linux]
+    number: 1                                            # [osx]
+    binary_relocation: true
+    skip: true                                           # [win]
+
+requirements:
+    build:
+      - {{ compiler('cxx') }}
+    host:
+      - boost
+      - eigen
+      - gmp
+      - mpfr
+      
+test:
+    commands:
+        # Verify library
+        - test -f $PREFIX/lib/libint2$SHLIB_EXT
+        # - test -f $PREFIX/lib/libderiv$SHLIB_EXT
+        # Inspect linkage
+        - ldd -r -u $PREFIX/lib/libint2.so && return 0  # [linux]
+        - ldd -v $PREFIX/lib/libint2.so                 # [linux]
+        # - otool -L $PREFIX/lib/libint2.dylib            # [osx]
+        - conda-inspect linkages libint --show-files
+
+about:
+    home: https://github.com/evaleev/libint/releases/tag/v2.4.2
+    dev_url: https://github.com/evaleev/libint
+    doc_url: http://evaleev.github.io/libint/
+    # doc_source_url:
+    license: LGPL-3.0+
+    license_url: https://opensource.org/licenses/LGPL-3.0+
+    license_file: LICENSE
+    license_family: LGPL
+    summary: "Libint is a high-performance library for computing Gaussian integrals in quantum mechanics"
+
