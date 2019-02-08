@@ -6,7 +6,6 @@ export CXXFLAGS="${CXXFLAGS} -Wall -O2 -pipe -march=x86-64 -std=c++11 -fPIC"
 export CPPFLAGS="-I${PREFIX}/include"
 export LDFLAGS="-L${PREFIX}/lib"
 
-mkdir build && cd build
-../configure --prefix=${PREFIX} --enable-shared
-make -j4
-make install
+./autogen.sh
+./configure --prefix=${PREFIX} --enable-shared
+make -j4  && make -j4  install
