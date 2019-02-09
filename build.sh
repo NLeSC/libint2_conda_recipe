@@ -1,4 +1,4 @@
-B1;5202;0c#!/bin/bash
+#!/bin/bash
 
 set -x
 echo $PREFIX
