@@ -1,8 +1,9 @@
+{% set name = "libint2" %}
 {% set version = "2.4.2" %}
 
 package:
-    name: libint2
-    version: {{ version }}
+  name: {{ name|lower }}
+  version: {{ version }}
 
 source:
     git_url: git@github.com:evaleev/libint.git           # [linux]
@@ -11,7 +12,6 @@ source:
 
 build:
     number: 1                                            # [linux]
-    number: 1                                            # [osx]
     binary_relocation: true
     skip: true                                           # [win]
 
@@ -31,13 +31,10 @@ test:
         # Inspect linkage
         - ldd -r -u $PREFIX/lib/libint2.so && return 0  # [linux]
         - ldd -v $PREFIX/lib/libint2.so                 # [linux]
-        # - otool -L $PREFIX/lib/libint2.dylib            # [osx]
-        # - conda-inspect linkages libint --show-files
 
 about:
-    home: https://github.com/evaleev/libint/releases/tag/v2.4.2
-    dev_url: https://github.com/evaleev/libint
-    doc_url: http://evaleev.github.io/libint/
+    home: https://github.com/evaleev/libint
+    doc_url: https://github.com/evaleev/libint/wiki
     # doc_source_url:
     license: LGPL-3.0+
     license_url: https://opensource.org/licenses/LGPL-3.0+
