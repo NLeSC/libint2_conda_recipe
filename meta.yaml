@@ -31,6 +31,8 @@ test:
         # Inspect linkage
         - ldd -r -u $PREFIX/lib/libint2.so && return 0  # [linux]
         - ldd -v $PREFIX/lib/libint2.so                 # [linux]
+        # - otool -L $PREFIX/lib/libint2.dylib            # [osx]
+        # - conda-inspect linkages libint --show-files
 
 about:
     home: https://github.com/evaleev/libint/releases/tag/v2.4.2
