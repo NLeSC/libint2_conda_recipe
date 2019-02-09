@@ -7,16 +7,17 @@ package:
 
 source:
     url: https://github.com/evaleev/{{ name }}/releases/download/v{{ version }}/{{ name }}-{{ version }}.tgz
+    sha256: 253fa3301e6742f5aac9e96dbe2a5707fc73abd6f4a214a8d44f03e113e69f00
 
 build:
-    number: 1                                            # [linux]
+  number: 0                                            # [linux]
     binary_relocation: true
     skip: true                                           # [win]
 
 requirements:
     build:
       - {{ compiler('cxx') }}
-    host:
+      host:
       - boost
       - eigen
       - gmp
