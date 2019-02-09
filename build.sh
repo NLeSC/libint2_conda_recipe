@@ -1,4 +1,4 @@
-#!/bin/bash
+B1;5202;0c#!/bin/bash
 
 set -x
 echo $PREFIX
@@ -6,7 +6,6 @@ export CXXFLAGS="${CXXFLAGS} -O2 -pipe -march=x86-64 -std=c++11 -fPIC"
 export CPPFLAGS="-I${PREFIX}/include"
 export LDFLAGS="-L${PREFIX}/lib"
 
-./autogen.sh
 ./configure --prefix=${PREFIX} --enable-shared
 
 make -j4
