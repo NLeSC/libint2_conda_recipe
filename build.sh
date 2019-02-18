@@ -1,14 +1,10 @@
 #!/bin/bash
 
 set -x
-echo $PREFIX
-export CXXFLAGS="${CXXFLAGS} -O2 -pipe -march=x86-64 -std=c++11 -fPIC"
-export CPPFLAGS="-I${PREFIX}/include"
-export LDFLAGS="-L${PREFIX}/lib"
+echo ${PREFIX}
+export CXXFLAGS="${CXXFLAGS} -fopenmp"
+./configure --prefix="${PREFIX}" --enable-shared
 
-./configure --prefix=${PREFIX} --enable-shared
-
-make -j4
-make -j4 check
-make -j4 install
-
+make -j${CPU_COUNT}
+make -j${CPU_COUNT} check
+make -j${CPU_COUNT} install
